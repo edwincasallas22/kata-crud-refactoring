@@ -1,5 +1,7 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.controllers;
 
+import co.com.sofka.crud.entity.Todo;
+import co.com.sofka.crud.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class TodoController {
 
     @Autowired
+
     private TodoService service;
 
     @GetMapping(value = "api/todos")
