@@ -13,7 +13,7 @@ public interface TodoMapper {
     @Mappings({
             @Mapping(source = "id" , target = "id"),
             @Mapping(source = "name" , target = "name"),
-            @Mapping(source = "completed", target = ""),
+            @Mapping(source = "completed", target = "completed"),
             @Mapping(source = "groupListId", target = "groupListId")
     })
     public TodoDTO aTodoDto(Todo todo);
@@ -25,3 +25,4 @@ public interface TodoMapper {
 
 
 }
+
