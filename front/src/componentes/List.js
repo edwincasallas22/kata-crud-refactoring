@@ -4,8 +4,9 @@ import { Store, HOST_API } from "../App";
 export const List = () => {
   const {
     dispatch,
-    state: { todo },
+    state: { todo, listGeneral },
   } = useContext(Store);
+
   const currentList = todo.list;
 
   useEffect(() => {

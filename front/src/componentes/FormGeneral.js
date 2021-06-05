@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { Store, HOST_API } from "../App";
 export const FormGeneral = () => {
   const formRef = useRef(null);
 
   const [state, setState] = useState("");
-
+  const { dispatch } = useContext(Store);
   const onAdd = (event) => {
     event.preventDefault();
 
@@ -17,11 +17,18 @@ export const FormGeneral = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
+      .then((response) => response.json())
+      .then((todoListageneral) => {
+        console.log(todoListageneral);
+        dispatch({ type: "add-list", listGeneral: todoListageneral });
+        setState("");
+        formRef.current.reset();
+      });
   };
 
   return (
-    <form>
+    <form ref={formRef}>
       <input
         type="text"
         name="name"
