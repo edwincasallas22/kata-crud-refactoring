@@ -1,4 +1,4 @@
-function reducer(state, action) {
+export function reducer(state, action) {
   switch (action.type) {
     case "update-item":
       const todoUpItem = state.todo;
@@ -34,5 +34,3 @@ function reducer(state, action) {
       return state;
   }
 }
-
-export default reducer;

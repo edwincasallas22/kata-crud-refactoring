@@ -1,9 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
-import Store from "./Store";
+import { Store, HOST_API } from "../App";
 
-const HOST_API = "http://localhost:8080/api";
-
-const Form = () => {
+export const Form = () => {
   const formRef = useRef(null);
   const {
     dispatch,
@@ -16,9 +14,9 @@ const Form = () => {
     event.preventDefault();
 
     const request = {
-      nameDTO: state.nameDTO,
+      name: state.name,
       id: null,
-      completedDTO: false,
+      completed: false,
     };
 
     fetch(HOST_API + "/todo", {
@@ -30,8 +28,9 @@ const Form = () => {
     })
       .then((response) => response.json())
       .then((todo) => {
+        console.log(todo);
         dispatch({ type: "add-item", item: todo });
-        setState({ nameDTO: "" });
+        setState({ name: "" });
         formRef.current.reset();
       });
   };
@@ -40,9 +39,9 @@ const Form = () => {
     event.preventDefault();
 
     const request = {
-      nameDTO: state.nameDTO,
+      name: state.name,
       id: item.id,
-      isCompletedDTO: item.isCompletedDTO,
+      isCompleted: item.isCompleted,
     };
 
     fetch(HOST_API + "/todo", {
@@ -55,7 +54,7 @@ const Form = () => {
       .then((response) => response.json())
       .then((todo) => {
         dispatch({ type: "update-item", item: todo });
-        setState({ nameDTO: "" });
+        setState({ name: "" });
         formRef.current.reset();
       });
   };
@@ -64,11 +63,11 @@ const Form = () => {
     <form ref={formRef}>
       <input
         type="text"
-        nameDTO="nameDTO"
+        name="name"
         placeholder="¿Qué piensas hacer hoy?"
-        defaultValue={item.nameDTO}
+        defaultValue={item.name}
         onChange={(event) => {
-          setState({ ...state, nameDTO: event.target.value });
+          setState({ ...state, name: event.target.value });
         }}
       ></input>
       {item.id && <button onClick={onEdit}>Actualizar</button>}
@@ -76,5 +75,3 @@ const Form = () => {
     </form>
   );
 };
-
-export default Form;

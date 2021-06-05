@@ -1,8 +1,8 @@
 package co.com.sofka.crud.dto;
 
-import co.com.sofka.crud.entity.Todo;
 
-import java.security.PrivateKey;
+
+
 import java.util.List;
 
 public class TodoListaDTO {

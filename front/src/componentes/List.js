@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import Store from "./Store";
+import { Store, HOST_API } from "../App";
 
-const HOST_API = "http://localhost:8080/api";
-
-const List = () => {
+export const List = () => {
   const {
     dispatch,
     state: { todo },
@@ -32,9 +30,9 @@ const List = () => {
 
   const onChange = (event, todo) => {
     const request = {
-      nameDTO: todo.nameDTO,
+      name: todo.name,
       id: todo.id,
-      completedDTO: event.target.checked,
+      completed: event.target.checked,
     };
     fetch(HOST_API + "/todo", {
       method: "PUT",
@@ -65,13 +63,13 @@ const List = () => {
         <tbody>
           {currentList.map((todo) => {
             return (
-              <tr key={todo.id} style={todo.completedDTO ? decorationDone : {}}>
+              <tr key={todo.id} style={todo.completed ? decorationDone : {}}>
                 <td>{todo.id}</td>
-                <td>{todo.nameDTO}</td>
+                <td>{todo.name}</td>
                 <td>
                   <input
                     type="checkbox"
-                    defaultChecked={todo.completedDTO}
+                    defaultChecked={todo.completed}
                     onChange={(event) => onChange(event, todo)}
                   ></input>
                 </td>
@@ -89,5 +87,3 @@ const List = () => {
     </div>
   );
 };
-
-export default List;
