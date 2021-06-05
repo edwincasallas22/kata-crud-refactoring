@@ -1,4 +1,3 @@
-
 package co.com.sofka.crud.services;
 
 import co.com.sofka.crud.dto.SuperListDTO;
@@ -28,14 +27,14 @@ public class SuperListService {
         return  superMapper.toSuperListDTO(superRepository.save(superList));
     }
 
-    public void delete(Long id){
+    public void delete(Long idlist){
 
-        superRepository.delete(superMapper.aSuperList(get(id)));
+        superRepository.delete(superMapper.aSuperList(get(idlist)));
     }
 
-    public SuperListDTO get(Long id){
+    public SuperListDTO get(Long idlist){
 
-        return superMapper.toSuperListDTO(superRepository.findById(id).orElseThrow());
+        return superMapper.toSuperListDTO(superRepository.findById(idlist).orElseThrow());
     }
 
 }

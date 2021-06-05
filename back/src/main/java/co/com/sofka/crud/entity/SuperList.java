@@ -1,39 +1,40 @@
-
 package co.com.sofka.crud.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 
 @Entity
-@Table(name = "SuperList")
+@Table(name = "superList")
 public class SuperList {
+
     @Id
     @GeneratedValue
-   //@Column(unique = true, nullable = false)
-    private Long id;
+    private Long groupId;
     private String name;
 
-   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "groupListId_id")
-    private Set<Todo> todo;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "groupId")
+    private List<Todo> todos;
 
-    public Set<Todo> getTodo() {
-        return todo;
+    public List<Todo> getTodos() {
+        return todos;
     }
 
-    public void setTodo(Set<Todo> todo) {
-        this.todo = todo;
+    public void setTodos(List<Todo> todos) {
+        this.todos = todos;
     }
 
-    public Long getId() {
-        return id;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
+
 
     public String getName() {
         return name;

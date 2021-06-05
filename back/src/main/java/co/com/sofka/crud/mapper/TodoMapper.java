@@ -16,7 +16,7 @@ public interface TodoMapper {
             @Mapping(source = "completed", target = "completed"),
             @Mapping(source = "groupListId", target = "groupListId")
     })
-    public TodoDTO aTodoDto(Todo todo);
+    TodoDTO aTodoDto(Todo todo);
     Iterable<TodoDTO> toTodoDTOs (Iterable<Todo> todos);
 
     @InheritInverseConfiguration
@@ -25,4 +25,3 @@ public interface TodoMapper {
 
 
 }
-

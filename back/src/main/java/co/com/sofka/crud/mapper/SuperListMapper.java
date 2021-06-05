@@ -8,14 +8,17 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-@Mapper (componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {TodoMapper.class})
 public interface SuperListMapper {
     @Mappings({
-            @Mapping(source = "id" , target = "id"),
-            @Mapping(source = "name" , target = "name")})
+            @Mapping(source = "groupId", target = "idlista"),
+            @Mapping(source = "name", target = "name"),
+            @Mapping(source = "todos", target = "todos")})
 
-    public SuperListDTO toSuperListDTO(SuperList superList);
-    Iterable<SuperListDTO> toSuperListDTOs (Iterable<SuperList> superLists);
+
+    SuperListDTO toSuperListDTO(SuperList superList);
+
+    Iterable<SuperListDTO> toSuperListDTOs(Iterable<SuperList> superLists);
 
     @InheritInverseConfiguration
     SuperList aSuperList(SuperListDTO superListDTO);

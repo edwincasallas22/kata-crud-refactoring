@@ -1,4 +1,3 @@
-
 package co.com.sofka.crud.controllers;
 
 import co.com.sofka.crud.dto.SuperListDTO;
@@ -26,20 +25,20 @@ public class SuperListController {
 
     @PutMapping(value = "api/superListGeneral")
     public SuperListDTO update(@RequestBody SuperListDTO superListDTO){
-        if(superListDTO.getId() != null){
+        if(superListDTO.getIdlista() != null){
             return superListService.save(superListDTO);
         }
-        throw new RuntimeException("No existe el id para actualziar");
+        throw new RuntimeException("No existe el id para actualizar");
     }
 
     @DeleteMapping(value = "api/{id}/superListGeneral")
-    public void delete(@PathVariable("id")Long id){
-        superListService.delete(id);
+    public void delete(@PathVariable("idlista")Long idlista){
+        superListService.delete(idlista);
     }
 
-    @GetMapping(value = "api/{id}/superListGeneral")
-    public SuperListDTO get(@PathVariable("id") Long id){
-        return superListService.get(id);
+    @GetMapping(value = "api/{idlista}/superListGeneral")
+    public SuperListDTO get(@PathVariable("idlista") Long idlista){
+        return superListService.get(idlista);
     }
 
 
