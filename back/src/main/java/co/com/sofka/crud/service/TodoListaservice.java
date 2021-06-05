@@ -5,7 +5,6 @@ import co.com.sofka.crud.entity.TodoListageneral;
 import co.com.sofka.crud.mapper.TodoListaMapper;
 import co.com.sofka.crud.repository.TodoListaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service

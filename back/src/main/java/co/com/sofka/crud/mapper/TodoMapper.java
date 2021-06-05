@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-@Mapper(componentModel = "spring")  //define la interfaz como un maper y hace la union con spring
+@Mapper(componentModel = "spring")
 public interface TodoMapper {
 
     @Mappings({

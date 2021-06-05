@@ -1,8 +1,5 @@
 package co.com.sofka.crud.dto;
 
-
-
-
 import java.util.List;
 
 public class TodoListaDTO {

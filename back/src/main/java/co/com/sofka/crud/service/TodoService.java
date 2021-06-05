@@ -15,7 +15,7 @@ import co.com.sofka.crud.repository.TodoRepository;
         @Autowired
         private TodoMapper mapper;
         public Iterable<TodoDTO> list(){
-            Iterable<Todo> todos = repository.findAll();//se trae un iterable
+            Iterable<Todo> todos = repository.findAll();
             return mapper.toTodoDTOs(todos);
         }
 
